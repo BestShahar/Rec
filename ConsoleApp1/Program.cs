@@ -7,6 +7,7 @@ namespace ConsoleApp1
         public static void Main(string[] args)
         {
             Console.WriteLine(IsExist(5678, 0));
+            Console.WriteLine(DigitCount(25));
         }
         public static int DigitCount(int x)
         {
