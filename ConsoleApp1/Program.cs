@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace ConsoleApp1
 {
@@ -26,11 +27,7 @@ namespace ConsoleApp1
             if (arr[i] == num) return true;
             return IsExistInArray(arr, num, i + 1);
         }
-        public static void Main(string[] args)
-        {
-            int[] r = {1, 2, 3, 4, 5};
-            Console.WriteLine(IsExistInArray(r, 5));
-        }
+
 
         public static int SumFromEnd(int[] arr, int i)
         {
@@ -71,5 +68,41 @@ namespace ConsoleApp1
             return IsExist(num/10, digit);
 
         }
+        public static string Otherwayaround(string str)
+        {
+            return Otherwayaround(str,"",0);
+        }
+        private static string Otherwayaround(string str, string str2, int i)
+        {
+            if (str.Length == 0)
+            {
+                return str2;
+            }
+            return Otherwayaround(str.Substring(0, str.Length - 1), str2 + str[str.Length-1] , i +1);
+        }
+        public static void Main(string[] args)
+        {
+            string[] r = { "Shahar", "Noa", "Gil" };
+            r = Otherarray(r);
+            Console.WriteLine(r[0]);
+            Console.WriteLine(r[1]);
+            Console.WriteLine(r[2]);
+        }
+
+        private static string[] Otherarray(string[] str, int i)
+        {
+            if(i==str.Length)
+            {
+                return str;
+            }
+            str[i]=Otherwayaround(str[i]);
+            return Otherarray(str, i+1);
+        }
+
+        public static string[] Otherarray(string[] str)
+        {
+            return Otherarray(str, 0);
+        }
+
     }
 }
